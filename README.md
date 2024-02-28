@@ -27,3 +27,11 @@ Vue2 낙서장
 ### 실행 명령어
 
 `yarn serve`
+
+### 이슈
+
+1. eslint + prettier 호환성 문제
+
+2. router 버전 이슈
+
+- `yarn add vue-router@3`
