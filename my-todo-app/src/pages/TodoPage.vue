@@ -12,19 +12,24 @@
     </div>
 
     <ul class="todo-list">
-      <!-- v-for 디렉티브를 사용해 todos 배열을 반복하여 각 Todo 항목을 li 요소로 렌더링 -->
-      <!-- :key는 Vue의 요소 식별자 -->
-      <li v-for="todo in todos" :key="todo.id" class="todo-item">
-        {{ todo.text }}
-        <button class="delete-btn" @click="deleteTodo(todo.id)">X</button>
-      </li>
+      <TodoItem
+        v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+        @delete-todo="deleteTodo"
+      />
     </ul>
   </div>
 </template>
 
 <script>
+import TodoItem from "./components/TodoItem.vue";
+
 export default {
   name: "TodoPage", // 컴포넌트의 이름
+  components: {
+    TodoItem,
+  },
   data() {
     // 컴포넌트의 데이터 객체를 반환
     return {
@@ -82,21 +87,5 @@ export default {
 .todo-list {
   list-style: none;
   padding: 0;
-}
-
-.todo-item {
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.delete-btn {
-  background-color: red;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 5px 10px;
 }
 </style>
