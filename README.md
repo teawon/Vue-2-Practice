@@ -35,3 +35,23 @@ Vue2 낙서장
 2. router 버전 이슈
 
 - `yarn add vue-router@3`
+
+## 정리
+
+### 파일 구조
+
+- `.vue` 확장자 가진 파일로 구성
+
+```
+<template>  ...   <template/>  // 컴포넌트의 HTML 마크업을 포함
+<script>    ...   </script>    // 컴포넌트의 JavaScript 로직 (데이터, 속성, 메서드, 생명주기 훅 등을 관리)
+<style>     ...   </style>
+```
+
+- 관련된 마크업, 로직, 스타일을 하나의 파일에서 관리하는 듯 함
+
+### 이벤트 처리를 위한 디렉티브
+
+- `@` 기호를 사용해 이벤트 바인딩 처리
+- `@click` , `@keyup.enter` ...
+  - ex) `<button @click="addTodo">추가</button>` - addTodo 메소드를 호출
