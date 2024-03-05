@@ -23,17 +23,19 @@
 </template>
 
 <script lang="ts">
+import Vue from "vue";
 import TodoItem from "./components/TodoItem.vue";
+interface Todo {
+  id: number;
+  text: string;
+}
 
-export default {
+export default Vue.extend({
   name: "TodoPage", // 컴포넌트의 이름
   components: {
     TodoItem,
   },
-  data(): {
-    todos: { id: number; text: string }[];
-    newTodoText: string;
-  } {
+  data() {
     // 컴포넌트의 데이터 객체를 반환
     return {
       todos: [
@@ -41,12 +43,11 @@ export default {
         { id: 2, text: "3" },
         { id: 3, text: "4" },
         { id: 4, text: "5" },
-      ],
+      ] as Todo[],
       newTodoText: "",
     };
   },
   methods: {
-    // 새 Todo 항목을 추가하는 메소드
     addTodo(): void {
       if (!this.checkValidText(this.newTodoText)) return;
       const newTodo = {
@@ -60,10 +61,10 @@ export default {
       return text.trim() !== "";
     },
     deleteTodo(id: number): void {
-      this.todos = this.todos.filter((todo) => todo.id !== id);
+      this.todos = this.todos.filter((todo: any) => todo.id !== id);
     },
   },
-};
+});
 </script>
 
 <style scoped>
