@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import TodoItem from "./components/TodoItem.vue";
 
 export default {
@@ -30,7 +30,10 @@ export default {
   components: {
     TodoItem,
   },
-  data() {
+  data(): {
+    todos: { id: number; text: string }[];
+    newTodoText: string;
+  } {
     // 컴포넌트의 데이터 객체를 반환
     return {
       todos: [
@@ -44,7 +47,7 @@ export default {
   },
   methods: {
     // 새 Todo 항목을 추가하는 메소드
-    addTodo() {
+    addTodo(): void {
       if (!this.checkValidText(this.newTodoText)) return;
       const newTodo = {
         id: Date.now(),
@@ -53,10 +56,10 @@ export default {
       this.todos.push(newTodo);
       this.newTodoText = "";
     },
-    checkValidText(text) {
+    checkValidText(text: string): boolean {
       return text.trim() !== "";
     },
-    deleteTodo(id) {
+    deleteTodo(id: number): void {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },

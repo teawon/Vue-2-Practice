@@ -54,4 +54,19 @@ Vue2 낙서장
 
 - `@` 기호를 사용해 이벤트 바인딩 처리
 - `@click` , `@keyup.enter` ...
+
   - ex) `<button @click="addTodo">추가</button>` - addTodo 메소드를 호출
+
+- 바인딩 처리
+
+```
+    <TodoItem
+    v-for="todo in todos"
+    :key="todo.id"
+    :todo="todo"
+    @delete-todo="deleteTodo"
+    />
+```
+
+- ":" 는 부모에서 자식컴포넌트로 데이터 동적 처리
+- "@" 의 경우 DOM이벤트 및 컴포넌트 이벤트 발생에 대해 실행 메서드 지정

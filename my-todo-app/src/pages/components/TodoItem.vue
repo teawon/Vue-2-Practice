@@ -5,13 +5,20 @@
   </li>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+
+interface TodoProps {
+  id: number;
+  text: string;
+}
+
+export default Vue.extend({
   name: "TodoItem",
   props: {
-    todo: Object,
+    todo: Object as () => TodoProps,
   },
-};
+});
 </script>
 
 <style scoped>
