@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div :class="`theme-${currentTheme}`">
+    <button @click="toggleTheme">테마 전환</button>
+
     <div class="total-count">총 목록 수: {{ todos.length }}</div>
 
     <div class="add-todo">
@@ -25,6 +27,8 @@
 <script lang="ts">
 import Vue from "vue";
 import TodoItem from "./components/TodoItem.vue";
+import { mapGetters, mapMutations } from "vuex";
+
 interface Todo {
   id: number;
   text: string;
@@ -47,7 +51,11 @@ export default Vue.extend({
       newTodoText: "",
     };
   },
+  computed: {
+    ...mapGetters(["currentTheme"]), // 스토어의 currentTheme 게터 매핑
+  },
   methods: {
+    ...mapMutations(["toggleTheme"]),
     addTodo(): void {
       if (!this.checkValidText(this.newTodoText)) return;
       const newTodo = {
