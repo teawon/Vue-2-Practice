@@ -20,9 +20,9 @@ export default new Vuex.Store<ThemeState>({
     },
   },
   actions: {
-    initTheme({ commit }) {
+    initTheme() {
       const savedTheme = localStorage.getItem("theme") || "light";
-      commit("toggleTheme", savedTheme);
+      document.body.setAttribute("data-theme", savedTheme);
     },
   },
   getters: {
