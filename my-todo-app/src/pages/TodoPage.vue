@@ -1,5 +1,5 @@
 <template>
-  <div :class="`theme-${currentTheme}`">
+  <div class="page-wrapper">
     <button @click="toggleTheme">테마 전환</button>
 
     <div class="total-count">총 목록 수: {{ todos.length }}</div>
@@ -76,10 +76,14 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.page-wrapper {
+  height: 100vh;
+  background-color: var(--color-primary);
+}
 .total-count {
   margin-bottom: 20px;
   font-size: 18px;
-  color: #333;
+  color: var(--color-text);
 }
 
 .add-todo {

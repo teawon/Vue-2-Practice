@@ -23,7 +23,8 @@ export default Vue.extend({
 
 <style scoped>
 .todo-item {
-  border-bottom: 1px solid #ccc;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-background);
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -32,7 +33,7 @@ export default Vue.extend({
 
 .delete-btn {
   background-color: red;
-  color: white;
+  color: var(--color-background);
   border: none;
   cursor: pointer;
   padding: 5px 10px;

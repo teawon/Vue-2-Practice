@@ -16,6 +16,7 @@ export default new Vuex.Store<ThemeState>({
     toggleTheme(state) {
       state.theme = state.theme === "light" ? "dark" : "light";
       localStorage.setItem("theme", state.theme);
+      document.body.setAttribute("data-theme", state.theme);
     },
   },
   actions: {
